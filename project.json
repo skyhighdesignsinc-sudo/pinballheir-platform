@@ -1,0 +1,27 @@
+{
+  "overview": "PinballHEIR is a 100% on-chain, instantly playable pinball arcade on the Internet Computer where every table is its own sovereign mini-economy and mini-DAO, governed by ICFC token holders. Features 29 gameplay systems, a 9-tab table constructor, deterministic physics replay proofs, SNS-style governance, and the genesis free table \"Neon Nights\".",
+  "features": [
+    "9-tab drag-and-drop table constructor with sound/music tab",
+    "Full pinball game with Three.js + cannon-es physics",
+    "DAO governance with ICFC token-weighted voting and 34 proposal types",
+    "TableEconomy: per-table treasury, jackpots, referrals, leaderboard payouts",
+    "NFT skin marketplace (ICRC-7, ICFC only)",
+    "Deterministic replay proof system for dispute resolution",
+    "Touch/mobile controls + PWA manifest",
+    "29 gameplay features: co-op, golden ball, ghost replay, charity tilt, easter eggs, seasons, and more",
+    "Genesis table Neon Nights (free, DAO-owned, Released)"
+  ],
+  "category": "games-entertainment",
+  "tags": [
+    "pinball",
+    "dao",
+    "icp",
+    "icfc",
+    "arcade",
+    "three-js",
+    "nft",
+    "governance",
+    "web3"
+  ],
+  "last_updated": "2026-04-20T14:28:20.031Z"
+}

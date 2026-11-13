@@ -1,0 +1,365 @@
+// Version: 1.0.0
+type Achievement__149943093 =
+  {
+    condition : Text;
+    description : Text;
+    iconAssetId : AssetId__131908388;
+    id : Text;
+    name : Text
+  };
+type AdSlot__736663551 =
+  {
+    cpcICFC : Nat;
+    cpmICFC : Nat;
+    id : Text;
+    position : Text;
+    size : Text;
+    tableId : ?TableId__859744924
+  };
+type AssetId__131908388 = Text;
+type AssetRoyaltyEntry__562316386 =
+  {
+    amount : Nat;
+    assetId : AssetId__131908388;
+    tableId : TableId__859744924;
+    timestamp : Timestamp__301639476
+  };
+type AssetStatus__46330287 = {#approved; #pending; #rejected};
+type AssetType__196782594 = {#code; #file};
+type CoOpSession__98260565 =
+  {
+    id : Text;
+    lastActivity : Timestamp__301639476;
+    lives : Nat;
+    players : [UserId__158757552];
+    score : Nat;
+    tableId : TableId__859744924
+  };
+type CreatorBalance__1058966329 =
+  {
+    claimable : Nat;
+    lastClaimed : ?Timestamp__301639476;
+    principal : UserId__158757552;
+    totalEarned : Nat
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type EasterEgg__496268324 =
+  {
+    description : Text;
+    discovered : Bool;
+    discoverer : ?UserId__158757552;
+    id : Text;
+    rewardICFC : Nat;
+    tableId : TableId__859744924
+  };
+type FileCategory__231743829 =
+  {#glb; #image; #json; #mp3; #svg; #texture; #threejs; #wav};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type LeaderboardEntry__470780848 =
+  {
+    badges : [Text];
+    bonusMultiplier : Nat;
+    displayName : Text;
+    player : UserId__158757552;
+    replayHash : ?Text;
+    score : Nat;
+    tableId : TableId__859744924;
+    timestamp : Timestamp__301639476
+  };
+type LeaderboardPeriod__704941798 = {#Daily; #Weekly};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type MarketAsset__123021661 =
+  {
+    approvedAt : ?Timestamp__301639476;
+    assetType : AssetType__196782594;
+    codeContent : ?Text;
+    creator : UserId__158757552;
+    description : Text;
+    fileCategory : FileCategory__231743829;
+    id : AssetId__131908388;
+    mintedAsNft : Bool;
+    name : Text;
+    nftTokenId : ?Nat;
+    royaltyBps : Nat;
+    status : AssetStatus__46330287;
+    storageUrl : ?Text;
+    submittedAt : Timestamp__301639476;
+    tags : [Text]
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type PinballTable__864476294 =
+  {
+    accessJson : Text;
+    backgroundAssetId : AssetId__131908388;
+    createdAt : Timestamp__301639476;
+    creator : UserId__158757552;
+    daoJson : Text;
+    economyJson : Text;
+    flipperStrength : Float;
+    friction : Float;
+    gravity : Float;
+    id : TableId__859744924;
+    layoutJson : Text;
+    musicId : ?AssetId__131908388;
+    name : Text;
+    physicsWasmId : ?AssetId__131908388;
+    rebound : Float;
+    rulesetJson : Text;
+    soundJson : Text;
+    status : TableStatus__773296291;
+    tableHeight : Nat;
+    tableWidth : Nat;
+    tiltSensitivity : Float;
+    visualsJson : Text
+  };
+type PlayerProfile__532222216 =
+  {
+    badges : [Text];
+    bannerAssetId : ?AssetId__131908388;
+    bio : Text;
+    createdAt : Timestamp__301639476;
+    discord : ?Text;
+    displayName : Text;
+    hideFromLeaderboard : Bool;
+    id : UserId__158757552;
+    profilePicAssetId : ?AssetId__131908388;
+    referralCode : Text;
+    referredByTable : ?TableId__859744924;
+    telegram : ?Text;
+    twitter : ?Text;
+    websiteUrl : ?Text
+  };
+type ProposalStatus__345626594 =
+  {#Executed; #Expired; #Failed; #Open; #Passed; #Voting};
+type ProposalType__60468960 =
+  {
+    #AddCurrency;
+    #BanPrincipal;
+    #BatchOp;
+    #ChangeGovernance;
+    #ChangePlatformFee;
+    #ChangeTableEconomy;
+    #ConfigureGlobalAds;
+    #ConfigureProfileSchema;
+    #CreateInstance;
+    #DeleteAsset;
+    #DeleteAttribute;
+    #DeleteInstance;
+    #DeleteMethod;
+    #DeleteObjectType;
+    #DeleteProfile;
+    #DisputeScore;
+    #EditAttribute;
+    #EditInstance;
+    #EditMethod;
+    #EditObjectType;
+    #NewAttribute;
+    #NewMethod;
+    #NewObjectType;
+    #ReleaseTable;
+    #RemoveCurrency;
+    #SetCharityWallet;
+    #SimulateProposal;
+    #TreasuryAction;
+    #UpdateCSS;
+    #UpdateCanister;
+    #UpdateFrontend;
+    #UpdateJS;
+    #UploadAsset;
+    #UploadNewPhysicsEngine
+  };
+type Proposal__69058394 =
+  {
+    abstainVotes : Nat;
+    burnPercentage : Nat;
+    createdAt : Timestamp__301639476;
+    id : Nat;
+    noVotes : Nat;
+    paramsJson : Text;
+    proposalType : ProposalType__60468960;
+    proposer : UserId__158757552;
+    stakedAmount : Nat;
+    status : ProposalStatus__345626594;
+    votingEnds : Timestamp__301639476;
+    yesVotes : Nat
+  };
+type ReplayRecord__336816870 =
+  {
+    disputed : Bool;
+    id : Text;
+    initialParamsJson : Text;
+    movesJson : Text;
+    playerId : UserId__158757552;
+    rngSeed : Text;
+    score : Nat;
+    scoreHash : Text;
+    tableId : TableId__859744924;
+    timestamp : Timestamp__301639476
+  };
+type Season__1060341883 =
+  {
+    archiveJson : Text;
+    bonusMultiplier : Nat;
+    endTime : Timestamp__301639476;
+    id : Text;
+    startTime : Timestamp__301639476;
+    tableId : TableId__859744924
+  };
+type SkinCollection__609606290 =
+  {
+    creatorPrincipal : UserId__158757552;
+    id : Text;
+    itemsJson : Text;
+    maxSupply : Nat;
+    minted : Nat;
+    name : Text;
+    priceICFC : Nat;
+    symbol : Text
+  };
+type StripeConfiguration__96897619 =
+  {allowedCountries : [Text]; secretKey : Text};
+type TableEconomy__386396235 =
+  {
+    charityTiltAmount : Nat;
+    creatorRoyaltyPercent : Nat;
+    entryFee : Nat;
+    goldenBallChance : Nat;
+    goldenBallReward : Nat;
+    icfcTreasury : Nat;
+    jackpotPercent : Nat;
+    leaderboardPeriod : LeaderboardPeriod__704941798;
+    leaderboardStructure : Text;
+    nudgePrice : Nat;
+    owner : UserId__158757552;
+    referralReward : Nat;
+    saveBallPrice : Nat;
+    tableId : TableId__859744924
+  };
+type TableId__859744924 = Text;
+type TableStatus__773296291 = {#Beta; #Released};
+type Timestamp__301639476 = Nat;
+type UserId__158757552 = Principal;
+type UserRole__1054455867 = {#admin; #guest; #user};
+type VoteChoice__134154751 = {#Abstain; #No; #Yes};
+type Vote__299636109 =
+  {
+    choice : VoteChoice__134154751;
+    proposalId : Nat;
+    timestamp : Timestamp__301639476;
+    voter : UserId__158757552;
+    weight : Nat
+  };
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable achievements :
+    {
+      var root : Node__46230540<Text, Achievement__149943093>;
+      var size : Nat__490723111
+    };
+  stable ads :
+    {
+      var root : Node__46230540<Text, AdSlot__736663551>;
+      var size : Nat__490723111
+    };
+  stable assetMap :
+    {
+      var root : Node__46230540<Text, MarketAsset__123021661>;
+      var size : Nat__490723111
+    };
+  stable boards :
+    {
+      var root :
+        Node__46230540<Text, List__415060402<LeaderboardEntry__470780848>>;
+      var size : Nat__490723111
+    };
+  stable var charityWallet : ?Principal;
+  stable creatorBalanceMap :
+    {
+      var root : Node__46230540<Principal, CreatorBalance__1058966329>;
+      var size : Nat__490723111
+    };
+  stable econs :
+    {
+      var root : Node__46230540<Text, TableEconomy__386396235>;
+      var size : Nat__490723111
+    };
+  stable eggs :
+    {
+      var root : Node__46230540<Text, EasterEgg__496268324>;
+      var size : Nat__490723111
+    };
+  stable var globalPlatformFeePct : Nat;
+  stable var globalTreasury : Nat;
+  stable var icfcTreasury : Nat;
+  stable var lastHeartbeat : Int;
+  stable var mysteryTable : ?Text;
+  stable var mysteryTableIdx : Nat;
+  stable var nextPropId : Nat;
+  stable profiles :
+    {
+      var root : Node__46230540<Principal, PlayerProfile__532222216>;
+      var size : Nat__490723111
+    };
+  stable proposals :
+    {
+      var root : Node__46230540<Nat, Proposal__69058394>;
+      var size : Nat__490723111
+    };
+  stable replays :
+    {
+      var root : Node__46230540<Text, ReplayRecord__336816870>;
+      var size : Nat__490723111
+    };
+  stable royaltyLedger :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?AssetRoyaltyEntry__562316386]];
+      var elementIndex : Nat__490723111
+    };
+  stable seasons :
+    {
+      var root : Node__46230540<Text, Season__1060341883>;
+      var size : Nat__490723111
+    };
+  stable sessions :
+    {
+      var root : Node__46230540<Text, CoOpSession__98260565>;
+      var size : Nat__490723111
+    };
+  stable skins :
+    {
+      var root : Node__46230540<Text, SkinCollection__609606290>;
+      var size : Nat__490723111
+    };
+  stable var stripeConfig : ?StripeConfiguration__96897619;
+  stable tables :
+    {
+      var root : Node__46230540<Text, PinballTable__864476294>;
+      var size : Nat__490723111
+    };
+  stable votes :
+    {
+      var root : Node__46230540<Text, Vote__299636109>;
+      var size : Nat__490723111
+    }
+};

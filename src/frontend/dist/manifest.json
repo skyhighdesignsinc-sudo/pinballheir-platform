@@ -1,0 +1,30 @@
+{
+  "name": "PinballHEIR",
+  "short_name": "PinballHEIR",
+  "description": "100% on-chain, DAO-governed pinball arcade on the Internet Computer",
+  "theme_color": "#7C3AED",
+  "background_color": "#0F0F12",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/assets/generated/arcade-cabinet-icon-transparent@128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/generated/chrome-pinball@512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "screenshots": [],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

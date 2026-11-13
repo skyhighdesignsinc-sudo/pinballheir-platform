@@ -1,0 +1,473 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type VoteChoice = 
+ variant {
+   Abstain;
+   No;
+   Yes;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserId = principal;
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = nat;
+type TableStatus = 
+ variant {
+   Beta;
+   Released;
+ };
+type TableId = text;
+type TableEconomy = 
+ record {
+   charityTiltAmount: nat;
+   creatorRoyaltyPercent: nat;
+   entryFee: nat;
+   goldenBallChance: nat;
+   goldenBallReward: nat;
+   icfcTreasury: nat;
+   jackpotPercent: nat;
+   leaderboardPeriod: LeaderboardPeriod;
+   leaderboardStructure: text;
+   nudgePrice: nat;
+   owner: UserId;
+   referralReward: nat;
+   saveBallPrice: nat;
+   tableId: TableId;
+ };
+type TableCreateInput = 
+ record {
+   accessJson: text;
+   creator: UserId;
+   daoJson: text;
+   economyJson: text;
+   layoutJson: text;
+   metadataJson: text;
+   name: text;
+   physicsJson: text;
+   rulesetJson: text;
+   soundJson: text;
+   visualsJson: text;
+ };
+type StripeSessionStatus = 
+ variant {
+   completed: record {
+                response: text;
+                userPrincipal: opt text;
+              };
+   failed: record {error: text;};
+ };
+type StripeConfiguration = 
+ record {
+   allowedCountries: vec text;
+   secretKey: text;
+ };
+type SkinCollection = 
+ record {
+   creatorPrincipal: UserId;
+   id: text;
+   itemsJson: text;
+   maxSupply: nat;
+   minted: nat;
+   name: text;
+   priceICFC: nat;
+   symbol: text;
+ };
+type ShoppingItem = 
+ record {
+   currency: text;
+   priceInCents: nat;
+   productDescription: text;
+   productName: text;
+   quantity: nat;
+ };
+type Season = 
+ record {
+   archiveJson: text;
+   bonusMultiplier: nat;
+   endTime: Timestamp;
+   id: text;
+   startTime: Timestamp;
+   tableId: TableId;
+ };
+type Result_4 = 
+ variant {
+   err: text;
+   ok: MarketAsset;
+ };
+type Result_3 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: text;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type ReplayRecord = 
+ record {
+   disputed: bool;
+   id: text;
+   initialParamsJson: text;
+   movesJson: text;
+   playerId: UserId;
+   rngSeed: text;
+   score: nat;
+   scoreHash: text;
+   tableId: TableId;
+   timestamp: Timestamp;
+ };
+type ProposalType = 
+ variant {
+   AddCurrency;
+   BanPrincipal;
+   BatchOp;
+   ChangeGovernance;
+   ChangePlatformFee;
+   ChangeTableEconomy;
+   ConfigureGlobalAds;
+   ConfigureProfileSchema;
+   CreateInstance;
+   DeleteAsset;
+   DeleteAttribute;
+   DeleteInstance;
+   DeleteMethod;
+   DeleteObjectType;
+   DeleteProfile;
+   DisputeScore;
+   EditAttribute;
+   EditInstance;
+   EditMethod;
+   EditObjectType;
+   NewAttribute;
+   NewMethod;
+   NewObjectType;
+   ReleaseTable;
+   RemoveCurrency;
+   SetCharityWallet;
+   SimulateProposal;
+   TreasuryAction;
+   UpdateCSS;
+   UpdateCanister;
+   UpdateFrontend;
+   UpdateJS;
+   UploadAsset;
+   UploadNewPhysicsEngine;
+ };
+type ProposalStatus = 
+ variant {
+   Executed;
+   Expired;
+   Failed;
+   Open;
+   Passed;
+   Voting;
+ };
+type Proposal = 
+ record {
+   abstainVotes: nat;
+   burnPercentage: nat;
+   createdAt: Timestamp;
+   id: nat;
+   noVotes: nat;
+   paramsJson: text;
+   proposalType: ProposalType;
+   proposer: UserId;
+   stakedAmount: nat;
+   status: ProposalStatus;
+   votingEnds: Timestamp;
+   yesVotes: nat;
+ };
+type ProfileUpdateInput = 
+ record {
+   bio: text;
+   discord: opt text;
+   displayName: text;
+   hideFromLeaderboard: bool;
+   telegram: opt text;
+   twitter: opt text;
+   websiteUrl: opt text;
+ };
+type PlayerProfile = 
+ record {
+   badges: vec text;
+   bannerAssetId: opt AssetId;
+   bio: text;
+   createdAt: Timestamp;
+   discord: opt text;
+   displayName: text;
+   hideFromLeaderboard: bool;
+   id: UserId;
+   profilePicAssetId: opt AssetId;
+   referralCode: text;
+   referredByTable: opt TableId;
+   telegram: opt text;
+   twitter: opt text;
+   websiteUrl: opt text;
+ };
+type PinballTable = 
+ record {
+   accessJson: text;
+   backgroundAssetId: AssetId;
+   createdAt: Timestamp;
+   creator: UserId;
+   daoJson: text;
+   economyJson: text;
+   flipperStrength: float64;
+   friction: float64;
+   gravity: float64;
+   id: TableId;
+   layoutJson: text;
+   musicId: opt AssetId;
+   name: text;
+   physicsWasmId: opt AssetId;
+   rebound: float64;
+   rulesetJson: text;
+   soundJson: text;
+   status: TableStatus;
+   tableHeight: nat;
+   tableWidth: nat;
+   tiltSensitivity: float64;
+   visualsJson: text;
+ };
+type MarketAsset = 
+ record {
+   approvedAt: opt Timestamp;
+   assetType: AssetType;
+   codeContent: opt text;
+   creator: UserId;
+   description: text;
+   fileCategory: FileCategory;
+   id: AssetId;
+   mintedAsNft: bool;
+   name: text;
+   nftTokenId: opt nat;
+   royaltyBps: nat;
+   status: AssetStatus;
+   storageUrl: opt text;
+   submittedAt: Timestamp;
+   tags: vec text;
+ };
+type LeaderboardPeriod = 
+ variant {
+   Daily;
+   Weekly;
+ };
+type LeaderboardEntry = 
+ record {
+   badges: vec text;
+   bonusMultiplier: nat;
+   displayName: text;
+   player: UserId;
+   replayHash: opt text;
+   score: nat;
+   tableId: TableId;
+   timestamp: Timestamp;
+ };
+type FileCategory = 
+ variant {
+   glb;
+   image;
+   json;
+   mp3;
+   svg;
+   texture;
+   threejs;
+   wav;
+ };
+type EconomyUpdateInput = 
+ record {
+   charityTiltAmount: opt nat;
+   entryFee: opt nat;
+   goldenBallChance: opt nat;
+   goldenBallReward: opt nat;
+   jackpotPercent: opt nat;
+   leaderboardPeriod: opt LeaderboardPeriod;
+   leaderboardStructure: opt text;
+   nudgePrice: opt nat;
+   referralReward: opt nat;
+   saveBallPrice: opt nat;
+ };
+type EasterEgg = 
+ record {
+   description: text;
+   discovered: bool;
+   discoverer: opt UserId;
+   id: text;
+   rewardICFC: nat;
+   tableId: TableId;
+ };
+type CreatorBalance = 
+ record {
+   claimable: nat;
+   lastClaimed: opt Timestamp;
+   "principal": UserId;
+   totalEarned: nat;
+ };
+type CoOpSession = 
+ record {
+   id: text;
+   lastActivity: Timestamp;
+   lives: nat;
+   players: vec UserId;
+   score: nat;
+   tableId: TableId;
+ };
+type AssetType = 
+ variant {
+   code;
+   file;
+ };
+type AssetStatus = 
+ variant {
+   approved;
+   pending;
+   rejected;
+ };
+type AssetId = text;
+type AssetFilter = 
+ variant {
+   all;
+   approved;
+   code;
+   files;
+   pending;
+ };
+type Achievement = 
+ record {
+   condition: text;
+   description: text;
+   iconAssetId: AssetId;
+   id: text;
+   name: text;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  addTable: (input: TableCreateInput) -> (Result_2);
+  approveAsset: (id: AssetId) -> (Result_4);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  claimRoyalties: () -> (Result_3);
+  createCheckoutSession: (items: vec ShoppingItem, successUrl: text,
+   cancelUrl: text) -> (text);
+  createSeason: (tableId: text, endTime: nat, bonusMultiplier: nat) ->
+   (Result_2);
+  discoverEasterEgg: (tableId: text, eggId: text) -> (Result_3);
+  executeProposal: (propId: nat) -> (Result);
+  forkTable: (sourceTableId: text) -> (Result_2);
+  getAchievements: () -> (vec Achievement) query;
+  getAsset: (id: AssetId) -> (opt MarketAsset) query;
+  getAssets: (filter: AssetFilter) -> (vec MarketAsset) query;
+  getCallerUserProfile: () -> (opt PlayerProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getCharityWallet: () -> (opt principal) query;
+  getCoOpSession: (sessionId: text) -> (opt CoOpSession) query;
+  getCreatorBalance: (creator: principal) -> (CreatorBalance) query;
+  getDailyMysteryTable: () -> (opt text) query;
+  getEasterEggs: (tableId: text) -> (vec EasterEgg) query;
+  /// Returns the global platform fee percentage (0–100).
+  /// Only the DAO can change this via a #ChangePlatformFee proposal.
+  getGlobalPlatformFee: () -> (nat) query;
+  getGlobalTreasury: () -> (nat) query;
+  getLeaderboard: (tableId: opt text, period: text, limit: nat) ->
+   (vec LeaderboardEntry) query;
+  getPlayerAchievements: ("principal": principal) -> (vec text) query;
+  getProposal: (id: nat) -> (opt Proposal) query;
+  getProposals: (status: opt text, limit: nat, offset: nat) ->
+   (vec Proposal) query;
+  getReplayRecord: (id: text) -> (opt ReplayRecord) query;
+  getSeasons: (tableId: text) -> (vec Season) query;
+  getSkinCollections: () -> (vec SkinCollection) query;
+  getStripeSessionStatus: (sessionId: text) -> (StripeSessionStatus);
+  getTable: (id: text) -> (opt PinballTable) query;
+  getTableEconomy: (tableId: text) -> (opt TableEconomy) query;
+  getTables: (filter: opt text) -> (vec PinballTable) query;
+  getUserProfile: ("principal": principal) -> (opt PlayerProfile) query;
+  giftTokens: (to: principal, amount: nat, memo: opt text) -> (Result);
+  initializeGenesisTable: () -> (Result);
+  isCallerAdmin: () -> (bool) query;
+  isStripeConfigured: () -> (bool) query;
+  joinCoOpSession: (tableId: text) -> (Result_2);
+  launchTournament: (tableId: text, prizePool: nat, durationHours: nat) ->
+   (Result_2);
+  leaveCoOpSession: (sessionId: text) -> (Result);
+  nudgeTable: (tableId: text) -> (Result);
+  purchaseSkin: (skinCollectionId: text, itemId: text) -> (Result);
+  rejectAsset: (id: AssetId) -> (Result_4);
+  releaseTable: (id: text) -> (Result);
+  saveCallerUserProfile: (input: ProfileUpdateInput) -> (Result);
+  saveTheBall: (tableId: text) -> (Result);
+  setCharityWallet: (wallet: principal) -> (Result);
+  setStripeConfiguration: (config: StripeConfiguration) -> ();
+  submitAsset: (id: AssetId, name: text, description: text, tags: vec text,
+   assetType: AssetType, fileCategory: FileCategory, storageUrl: opt text,
+   codeContent: opt text, royaltyBps: nat) -> (Result_4);
+  submitProposal: (proposalType: ProposalType, paramsJson: text,
+   stakedAmount: nat) -> (Result_3);
+  submitReplay: (tableId: text, movesJson: text, initialParamsJson: text,
+   rngSeed: text, score: nat) -> (Result_2);
+  submitScore: (tableId: text, score: nat, replayJson: text, rngSeed:
+   text) -> (Result);
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  triggerCharityTilt: (tableId: text, amount: nat) -> (Result);
+  triggerGoldenBall: (tableId: text) -> (Result_1);
+  updateTable: (id: text, updates: text) -> (Result);
+  updateTableEconomy: (tableId: text, updates: EconomyUpdateInput) ->
+   (Result);
+  voteOnProposal: (proposalId: nat, choice: VoteChoice, weight: nat) ->
+   (Result);
+}

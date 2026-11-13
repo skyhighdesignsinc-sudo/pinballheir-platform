@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: 0.145 0 0;
+    --foreground: 0.985 0 0;
+    --card: 0.205 0 0;
+    --card-foreground: 0.985 0 0;
+    --popover: 0.269 0 0;
+    --popover-foreground: 0.985 0 0;
+    --primary: 0.7 0.25 280;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.269 0 0;
+    --secondary-foreground: 0.985 0 0;
+    --muted: 0.269 0 0;
+    --muted-foreground: 0.708 0 0;
+    --accent: 0.65 0.28 180;
+    --accent-foreground: 0.985 0 0;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.7 0.25 280;
+    --chart-1: 0.75 0.25 60;
+    --chart-2: 0.65 0.28 180;
+    --chart-3: 0.7 0.25 280;
+    --chart-4: 0.6 0.22 320;
+    --chart-5: 0.55 0.2 40;
+    --sidebar: 0.205 0 0;
+    --sidebar-foreground: 0.985 0 0;
+    --sidebar-primary: 0.7 0.25 280;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.269 0 0;
+    --sidebar-accent-foreground: 0.985 0 0;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.439 0 0;
+    --font-display: "Space Grotesk";
+    --font-body: "Plus Jakarta Sans";
+    --font-mono: "JetBrains Mono";
+  }
+
+  .dark {
+    --background: 0.145 0 0;
+    --foreground: 0.985 0 0;
+    --card: 0.205 0 0;
+    --card-foreground: 0.985 0 0;
+    --popover: 0.269 0 0;
+    --popover-foreground: 0.985 0 0;
+    --primary: 0.7 0.25 280;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.269 0 0;
+    --secondary-foreground: 0.985 0 0;
+    --muted: 0.269 0 0;
+    --muted-foreground: 0.708 0 0;
+    --accent: 0.65 0.28 180;
+    --accent-foreground: 0.985 0 0;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.7 0.25 280;
+    --chart-1: 0.75 0.25 60;
+    --chart-2: 0.65 0.28 180;
+    --chart-3: 0.7 0.25 280;
+    --chart-4: 0.6 0.22 320;
+    --chart-5: 0.55 0.2 40;
+    --sidebar: 0.205 0 0;
+    --sidebar-foreground: 0.985 0 0;
+    --sidebar-primary: 0.7 0.25 280;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.269 0 0;
+    --sidebar-accent-foreground: 0.985 0 0;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.439 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@layer utilities {
+  /* ── Typography ─────────────────────────────────────────────────────────── */
+  .font-display {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .font-body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  /* ── Neon glow effects ───────────────────────────────────────────────────── */
+  .arcade-glow {
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.5), 0 0 40px
+      oklch(var(--primary) / 0.25);
+  }
+
+  .arcade-glow-accent {
+    box-shadow: 0 0 20px oklch(var(--accent) / 0.5), 0 0 40px
+      oklch(var(--accent) / 0.25);
+  }
+
+  .arcade-glow-active {
+    box-shadow: 0 0 30px oklch(var(--accent) / 0.7), 0 0 60px
+      oklch(var(--accent) / 0.4), inset 0 0 20px oklch(var(--accent) / 0.1);
+  }
+
+  /* ── Neon borders ────────────────────────────────────────────────────────── */
+  .arcade-border {
+    border: 2px solid oklch(var(--primary) / 0.4);
+  }
+
+  .arcade-border-accent {
+    border: 2px solid oklch(var(--accent) / 0.4);
+  }
+
+  .arcade-border-active {
+    border: 2px solid oklch(var(--accent) / 0.8);
+  }
+
+  /* ── Bezel / housing ─────────────────────────────────────────────────────── */
+  .arcade-bezel {
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0px
+      rgba(255, 255, 255, 0.05);
+  }
+
+  /* ── Tab states (9-tab constructor + any tab UI) ─────────────────────────── */
+  .arcade-tab {
+    @apply px-4 py-2 rounded-md font-display text-sm font-semibold text-muted-foreground
+           border border-primary/20 transition-all duration-200 cursor-pointer
+           hover:text-foreground hover:border-primary/40;
+  }
+
+  .arcade-tab-active {
+    @apply text-accent border-accent/60 bg-accent/10;
+    box-shadow: 0 0 16px oklch(var(--accent) / 0.35), 0 0 32px
+      oklch(var(--accent) / 0.15), inset 0 0 12px oklch(var(--accent) / 0.06);
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────────────── */
+  .arcade-card {
+    @apply rounded-lg bg-card border border-border p-4;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0px
+      rgba(255, 255, 255, 0.05);
+  }
+
+  .arcade-card-interactive {
+    @apply arcade-card cursor-pointer transition-all duration-200;
+  }
+
+  .arcade-card-interactive:hover {
+    @apply border-accent/50;
+    box-shadow: 0 0 20px oklch(var(--accent) / 0.25), 0 8px 24px
+      rgba(0, 0, 0, 0.6);
+  }
+
+  /* ── Constructor form regions ────────────────────────────────────────────── */
+  .construction-zone {
+    @apply p-6 rounded-lg space-y-4;
+    background: oklch(var(--popover) / 0.5);
+    border: 2px solid oklch(var(--accent) / 0.4);
+  }
+
+  .lever-control {
+    @apply flex items-center gap-4 p-3 rounded-md
+           border border-primary/20 transition-colors duration-200;
+    background: oklch(var(--background) / 0.5);
+  }
+
+  .lever-control:hover {
+    background: oklch(var(--background) / 0.8);
+    border-color: oklch(var(--primary) / 0.4);
+  }
+
+  /* ── Score typography ────────────────────────────────────────────────────── */
+  .score-display {
+    @apply font-mono text-lg font-bold tracking-wider text-accent;
+  }
+
+  .score-large {
+    @apply font-mono text-4xl font-bold tracking-widest text-accent;
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  /* ── Governance badge ────────────────────────────────────────────────────── */
+  .governance-badge {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded text-xs
+           font-bold font-display text-accent bg-accent/10
+           border border-accent/40;
+  }
+
+  /* Legacy alias (typo in original) */
+  .govenance-badge {
+    @apply governance-badge;
+  }
+
+  /* ── Gradient text animation ─────────────────────────────────────────────── */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  /* ── Transition helpers ──────────────────────────────────────────────────── */
+  .transition-smooth {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Scrollbar styling ───────────────────────────────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: oklch(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--primary) / 0.4);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--primary) / 0.7);
+  }
+
+  /* ── Mobile touch target helpers ─────────────────────────────────────────── */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* ── Neon text ────────────────────────────────────────────────────────────── */
+  .neon-text-primary {
+    color: oklch(var(--primary));
+    text-shadow: 0 0 10px oklch(var(--primary) / 0.8), 0 0 20px
+      oklch(var(--primary) / 0.5);
+  }
+
+  .neon-text-accent {
+    color: oklch(var(--accent));
+    text-shadow: 0 0 10px oklch(var(--accent) / 0.8), 0 0 20px
+      oklch(var(--accent) / 0.5);
+  }
+}
